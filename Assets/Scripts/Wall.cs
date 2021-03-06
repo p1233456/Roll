@@ -7,9 +7,13 @@ public class Wall : MonoBehaviour
 {
     [SerializeField]
     private UnityEvent touchPlayer;
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        if (other.CompareTag("Player"))
+        touchPlayer.AddListener(FindObjectOfType<GameManager>().GetComponent<GameManager>().GameOver);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             touchPlayer.Invoke();
         }

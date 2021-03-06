@@ -8,10 +8,13 @@ public class CameraWalk : MonoBehaviour
     private Transform playerTransform;
     [SerializeField]
     private Vector3 offset;
+
+    private bool canMove;
     // Start is called before the first frame update
     void Start()
     {
         offset = transform.position - playerTransform.position;
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -22,6 +25,12 @@ public class CameraWalk : MonoBehaviour
 
     void Move()
     {
-        transform.position = playerTransform.position + offset;
+        if(canMove)
+            transform.position = playerTransform.position + offset;
+    }
+
+    public void StopMove()
+    {
+        canMove = false;
     }
 }

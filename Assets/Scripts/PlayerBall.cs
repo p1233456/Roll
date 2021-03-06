@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerBall : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerBall : MonoBehaviour
     [SerializeField]
     private float jumpPower;
     private Vector3 lastPosition = Vector3.zero;
+    public bool canMove;
+    [SerializeField]
+    private UnityEvent gameOver;
 
     private void Awake()
     {
@@ -23,7 +27,7 @@ public class PlayerBall : MonoBehaviour
     }
     private void Start()
     {
-
+        canMove = false;
     }
 
     private void FixedUpdate()
@@ -35,6 +39,7 @@ public class PlayerBall : MonoBehaviour
     private void Update()
     {
         InputKey();
+        GameOverCheck();
     }
     
     private void SpeedCheck()
@@ -45,7 +50,7 @@ public class PlayerBall : MonoBehaviour
 
     private void Move()
     {
-        if (speed < maxSpeed)
+        if (speed < maxSpeed && canMove)
             movePower = 1f;
         else
             movePower = 0;
@@ -77,6 +82,19 @@ public class PlayerBall : MonoBehaviour
         {
             Debug.Log("low position" + transform.position);
             isJump = false;
+        }
+    }
+
+    public void StartMove()
+    {
+        canMove = true;
+    }
+
+    private void GameOverCheck()
+    {
+        if(transform.position.y < -10)
+        {
+            gameOver.Invoke();
         }
     }
 }
