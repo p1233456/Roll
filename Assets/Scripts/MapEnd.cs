@@ -8,6 +8,11 @@ public class MapEnd : MonoBehaviour
     [SerializeField]
     private UnityEvent playerOutMap;
 
+    private void Start()
+    {
+        playerOutMap.AddListener(FindObjectOfType<LevelManager>().GetComponent<LevelManager>().RemovePassMap);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
