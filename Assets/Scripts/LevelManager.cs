@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     {
         mapObjectsQue = new Queue<GameObject>();
         madeMapDistance = 0;
+        InstaniateMap(maps[0]);
     }
 
     private void Update()
@@ -40,5 +41,5 @@ public class LevelManager : MonoBehaviour
         mapObjectsQue.Enqueue(instantiedMap);
     }
 
-    private void RemoveMap(GameObject mapObject) => Destroy(mapObject);
+    private void RemoveMap(GameObject mapObject) => Destroy(mapObject, 1f);
 }
