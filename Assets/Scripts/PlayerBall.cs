@@ -17,8 +17,18 @@ public class PlayerBall : MonoBehaviour
         Move();
     }
 
+    private void Update()
+    {
+        InputKey();
+    }
+
     private void Move()
     {
         rigid.AddForce(new Vector3(horizontal, 0, 1), ForceMode.Impulse);
+    }
+
+    private void InputKey()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
     }
 }
