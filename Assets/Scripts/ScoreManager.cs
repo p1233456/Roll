@@ -17,6 +17,11 @@ public class ScoreManager : MonoBehaviour
         UIUpdate();
     }
 
+    public void GetScore(int score)
+    {
+        this.score += score;
+    }
+
     private void UIUpdate()
     {
         scoreText.text = score + "점";
