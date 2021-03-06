@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     private void InstaniateMap(Map map)
     {
         GameObject instantiedMap = Instantiate(map.MapObject);
-        instantiedMap.transform.position = new Vector3(0, -1, madeMapDistance + map.MapSize / 2);
+        instantiedMap.transform.position = new Vector3(0, -1, madeMapDistance + map.StartPosition.z * -1);
         madeMapDistance += map.MapSize;
         mapObjectsQue.Enqueue(instantiedMap);
     }
