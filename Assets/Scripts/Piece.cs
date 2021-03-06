@@ -23,4 +23,13 @@ public class Piece : MonoBehaviour
         transform.RotateAround(transform.position, Vector3.up, rotateSpeed * Time.deltaTime);
         //transform.Rotate(Vector3.up * speed * Time.deltaTime, Space.World);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SendMessage("GetScore");
+            Destroy(this);
+        }
+    }
 }
