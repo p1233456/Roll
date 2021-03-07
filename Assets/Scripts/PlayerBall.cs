@@ -104,7 +104,7 @@ public class PlayerBall : MonoBehaviour
 
     private void GameOver()
     {
-        if (tag == "Player")
+        if (tag != "Finish")
             gameOver.Invoke();
     }
 }

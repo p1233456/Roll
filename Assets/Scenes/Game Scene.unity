@@ -390,6 +390,7 @@ MonoBehaviour:
   - {fileID: 7827786682894601359, guid: 5d507febaa295ca43b38c46f90749238, type: 3}
   - {fileID: 7827786682894601359, guid: 6ecfa1df789a99148bf6860e52d4bcbd, type: 3}
   - {fileID: 7827786682894601359, guid: 241f25ebb1cc4c644a5a314e13ebfec1, type: 3}
+  - {fileID: 7827786682894601359, guid: cb6fe2eadf480db4187223f323cf84c9, type: 3}
   maxQueSize: 5
 --- !u!114 &523317328
 MonoBehaviour:

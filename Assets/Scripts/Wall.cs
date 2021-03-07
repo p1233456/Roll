@@ -22,6 +22,7 @@ public class Wall : MonoBehaviour
         if (collision.gameObject.CompareTag("Cracker"))
         {
             touchCracker.Invoke();
+            Destroy(gameObject);
         }
     }
 }
