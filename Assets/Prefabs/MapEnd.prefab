@@ -47,6 +47,10 @@ MonoBehaviour:
   playerOutMap:
     m_PersistentCalls:
       m_Calls: []
+  getScore:
+    m_PersistentCalls:
+      m_Calls: []
+  score: 100
 --- !u!65 &5549948745805966104
 BoxCollider:
   m_ObjectHideFlags: 0
