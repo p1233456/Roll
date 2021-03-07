@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Piece : Item
+public class Cracker : Item
 {
     [SerializeField]
     protected MyIntEvent getCracker;
@@ -19,5 +18,11 @@ public class Piece : Item
     {
         base.TouchPlayerEvent();
         getCracker.Invoke(crackerPiece);
+    }
+
+    protected override void Rotate()
+    {
+
+        transform.RotateAround(transform.position, Vector3.left, rotateSpeed * Time.deltaTime);
     }
 }

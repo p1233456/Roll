@@ -17,5 +17,9 @@ public class Wall : MonoBehaviour
         {
             touchPlayer.Invoke();
         }
+        if (collision.gameObject.CompareTag("Cracker"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
