@@ -29,7 +29,10 @@ public class CrackerPower : MonoBehaviour
         Debug.Log(crackerRate);
         UpdateUI();
         if (crackerRate > 0.99)
+        {
+            StopAllCoroutines();
             StartCoroutine(CrackerPowerEvent());
+        }
     }
 
     public void GetCrackerPiece(int num)

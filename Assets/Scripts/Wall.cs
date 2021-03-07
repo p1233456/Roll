@@ -7,6 +7,8 @@ public class Wall : MonoBehaviour
 {
     [SerializeField]
     private UnityEvent touchPlayer;
+    [SerializeField]
+    private UnityEvent touchCracker;
     private void Awake()
     {
         touchPlayer.AddListener(FindObjectOfType<GameManager>().GetComponent<GameManager>().GameOver);
@@ -19,7 +21,7 @@ public class Wall : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Cracker"))
         {
-            Destroy(gameObject);
+            touchCracker.Invoke();
         }
     }
 }

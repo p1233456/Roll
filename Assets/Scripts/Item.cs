@@ -40,12 +40,13 @@ public abstract class Item : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             TouchPlayerEvent();
-            Destroy(gameObject);
+            transform.Translate(new Vector3(0, 0));
         }
         if (other.CompareTag("Cracker"))
         {
+            TouchPlayerEvent();
             TouchCrackerEvent();
-            Destroy(gameObject);
+            transform.Translate(new Vector3(0, 0));
         }
     }
 
