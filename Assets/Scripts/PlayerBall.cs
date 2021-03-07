@@ -41,7 +41,7 @@ public class PlayerBall : MonoBehaviour
 
     private void Update()
     {
-        if (tag == "Player")
+        if (tag != "Finish")
         {
             InputKey();
             GameOverCheck();
@@ -67,7 +67,6 @@ public class PlayerBall : MonoBehaviour
     {
         if (!isJump)
         {
-            Debug.Log("jump position : " + transform.position);
             rigid.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
             isJump = true;
             jump.Invoke();
@@ -99,12 +98,13 @@ public class PlayerBall : MonoBehaviour
 
     private void GameOverCheck()
     {
-        if (transform.position.y < -10)
+        if (transform.position.y < -5)
             GameOver();
     }
 
-    public void GameOver()
+    private void GameOver()
     {
-        gameOver.Invoke();
+        if (tag == "Player")
+            gameOver.Invoke();
     }
 }

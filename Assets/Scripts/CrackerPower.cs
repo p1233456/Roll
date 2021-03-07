@@ -26,7 +26,6 @@ public class CrackerPower : MonoBehaviour
     void Update()
     {
         crackerRate = (float)currentCrackerPiece / requireCrakcerPiece;
-        Debug.Log(crackerRate);
         UpdateUI();
         if (crackerRate > 0.99)
         {
