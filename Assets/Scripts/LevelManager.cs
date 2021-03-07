@@ -11,7 +11,8 @@ public class LevelManager : MonoBehaviour
     private int maxQueSize;
     private float madeMapDistance;
 
-    private void Awake()
+
+    private void Start()
     {
         mapObjectsQue = new Queue<GameObject>();
         madeMapDistance = 0;

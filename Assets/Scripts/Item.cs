@@ -12,13 +12,16 @@ public abstract class Item : MonoBehaviour
     [SerializeField]
     protected float rotateSpeed;
     [SerializeField]
-    protected MyIntEvent getScore;
+    protected MyIntEvent touchPlayer;
+    [SerializeField]
+    protected MyIntEvent touchCracker;
     [SerializeField]
     protected int score; 
     
     protected virtual void Start()
     {
-        getScore.AddListener(FindObjectOfType<ScoreManager>().GetComponent<ScoreManager>().GetScore);
+        touchPlayer.AddListener(FindObjectOfType<ScoreManager>().GetComponent<ScoreManager>().GetScore);
+        touchCracker.AddListener(FindObjectOfType<ScoreManager>().GetComponent<ScoreManager>().GetScore);
     }
 
     protected virtual void Update()
@@ -33,11 +36,26 @@ public abstract class Item : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger enter");
         if (other.CompareTag("Player"))
         {
-            getScore.Invoke(score);
-            Destroy(this);
+            TouchPlayerEvent();
+            transform.position = new Vector3(0, 0);
         }
+        if (other.CompareTag("Cracker"))
+        {
+            TouchPlayerEvent();
+            TouchCrackerEvent();
+            transform.position = new Vector3(0, 0);
+        }
+    }
+
+    protected virtual void TouchPlayerEvent()
+    {
+        touchPlayer.Invoke(score);
+    }
+
+    protected virtual void TouchCrackerEvent()
+    {
+        touchCracker.Invoke(score * 2);
     }
 }
