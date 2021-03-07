@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver.Invoke();
+        FindObjectOfType<PlayerBall>().tag = "Finish";
         gameOverPanel.SetActive(true);
         reStartButton.SetActive(true);
     }

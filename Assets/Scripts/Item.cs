@@ -36,17 +36,16 @@ public abstract class Item : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger enter");
         if (other.CompareTag("Player"))
         {
             TouchPlayerEvent();
-            transform.Translate(new Vector3(0, 0));
+            transform.position = new Vector3(0, 0);
         }
         if (other.CompareTag("Cracker"))
         {
             TouchPlayerEvent();
             TouchCrackerEvent();
-            transform.Translate(new Vector3(0, 0));
+            transform.position = new Vector3(0, 0);
         }
     }
 

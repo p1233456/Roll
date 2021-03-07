@@ -18,8 +18,11 @@ public class PlayerBall : MonoBehaviour
     private float jumpPower;
     private Vector3 lastPosition = Vector3.zero;
     public bool canMove;
+    private bool isGameOver;
     [SerializeField]
     private UnityEvent gameOver;
+    [SerializeField]
+    private UnityEvent jump;
 
     private void Awake()
     {
@@ -38,8 +41,11 @@ public class PlayerBall : MonoBehaviour
 
     private void Update()
     {
-        InputKey();
-        GameOverCheck();
+        if (tag == "Player")
+        {
+            InputKey();
+            GameOverCheck();
+        }
     }
     
     private void SpeedCheck()
@@ -64,6 +70,7 @@ public class PlayerBall : MonoBehaviour
             Debug.Log("jump position : " + transform.position);
             rigid.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
             isJump = true;
+            jump.Invoke();
         }
     }
 
@@ -92,9 +99,12 @@ public class PlayerBall : MonoBehaviour
 
     private void GameOverCheck()
     {
-        if(transform.position.y < -10)
-        {
-            gameOver.Invoke();
-        }
+        if (transform.position.y < -10)
+            GameOver();
+    }
+
+    public void GameOver()
+    {
+        gameOver.Invoke();
     }
 }
