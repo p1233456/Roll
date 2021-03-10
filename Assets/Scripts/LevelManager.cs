@@ -32,7 +32,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void RemovePassMap() => RemoveMap(mapObjectsQue.Dequeue());
+    public void RemovePassMap()
+    {
+        RemoveMap(mapObjectsQue.Dequeue());
+    }
    
     private void InstaniateMap(Map map)
     {
@@ -42,5 +45,8 @@ public class LevelManager : MonoBehaviour
         mapObjectsQue.Enqueue(instantiedMap);
     }
 
-    private void RemoveMap(GameObject mapObject) => Destroy(mapObject, 1f);
+    private void RemoveMap(GameObject mapObject)
+    {
+        Destroy(mapObject, 1f);
+    }
 }

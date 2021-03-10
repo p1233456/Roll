@@ -53,7 +53,6 @@ public abstract class Item : MonoBehaviour
     {
         touchPlayer.Invoke(score);
     }
-
     protected virtual void TouchCrackerEvent()
     {
         touchCracker.Invoke(score * 2);

@@ -1970,7 +1970,6 @@ MonoBehaviour:
   speed: 0
   movePower: 1
   jumpPower: 5
-  canMove: 0
   gameOver:
     m_PersistentCalls:
       m_Calls:

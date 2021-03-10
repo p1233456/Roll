@@ -5,9 +5,15 @@ using UnityEngine.Events;
 
 public class PlayerBall : MonoBehaviour
 {
+    #region Private Variable
     private Rigidbody rigid;
     private float horizontal;
+    private bool canMove;
     private bool isJump;
+    private Vector3 lastPosition = Vector3.zero;
+    #endregion
+
+    #region Serialize Private Field
     [SerializeField]
     private float maxSpeed;
     [SerializeField]
@@ -16,14 +22,13 @@ public class PlayerBall : MonoBehaviour
     private float movePower;
     [SerializeField]
     private float jumpPower;
-    private Vector3 lastPosition = Vector3.zero;
-    public bool canMove;
-    private bool isGameOver;
     [SerializeField]
     private UnityEvent gameOver;
     [SerializeField]
     private UnityEvent jump;
+    #endregion
 
+    #region MonoBehavior CallBacks
     private void Awake()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
@@ -47,13 +52,17 @@ public class PlayerBall : MonoBehaviour
             GameOverCheck();
         }
     }
-    
-    private void SpeedCheck()
-    {
-        speed = (transform.position - lastPosition).magnitude;
-        lastPosition = transform.position;
-    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isJump = false;
+        }
+    }
+    #endregion
+
+    #region Private Method
     private void Move()
     {
         if (speed < maxSpeed && canMove)
@@ -61,6 +70,12 @@ public class PlayerBall : MonoBehaviour
         else
             movePower = 0;
          rigid.AddForce(new Vector3(horizontal, 0, movePower), ForceMode.Impulse);
+    }
+
+    private void SpeedCheck()
+    {
+        speed = (transform.position - lastPosition).magnitude;
+        lastPosition = transform.position;
     }
 
     private void Jump()
@@ -82,20 +97,6 @@ public class PlayerBall : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            Debug.Log("low position" + transform.position);
-            isJump = false;
-        }
-    }
-
-    public void StartMove()
-    {
-        canMove = true;
-    }
-
     private void GameOverCheck()
     {
         if (transform.position.y < -5)
@@ -107,4 +108,12 @@ public class PlayerBall : MonoBehaviour
         if (tag != "Finish")
             gameOver.Invoke();
     }
+    #endregion
+
+    #region Public Method
+    public void StartMove()
+    {
+        canMove = true;
+    }
+    #endregion
 }

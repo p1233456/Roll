@@ -5,10 +5,14 @@ using UnityEngine.Events;
 
 public class Wall : MonoBehaviour
 {
+    #region Serialize Private Field
     [SerializeField]
     private UnityEvent touchPlayer;
     [SerializeField]
     private UnityEvent touchCracker;
+    #endregion
+
+    #region MonoBehaviour CallBacks
     private void Awake()
     {
         touchPlayer.AddListener(FindObjectOfType<GameManager>().GetComponent<GameManager>().GameOver);
@@ -25,4 +29,5 @@ public class Wall : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 }

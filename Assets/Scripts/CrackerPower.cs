@@ -53,7 +53,6 @@ public class CrackerPower : MonoBehaviour
     {
         crackerImage.fillAmount = crackerRate;
     }
-
     IEnumerator CrackerPowerEvent()
     {
         StartEvent();

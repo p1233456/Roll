@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Piece : Item
 {
     [SerializeField]
-    protected MyIntEvent getCracker;
+    private MyIntEvent getCracker;
     [SerializeField]
     private int crackerPiece;
     protected override void Start()
