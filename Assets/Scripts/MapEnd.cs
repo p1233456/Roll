@@ -19,7 +19,8 @@ public class MapEnd : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Cracker")) { 
+        if (other.CompareTag("Player") || other.CompareTag("Cracker")) 
+        { 
             playerOutMap.Invoke();
             getScore.Invoke(score);
         }
